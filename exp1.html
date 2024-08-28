@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Form Validation</title>
+  <!-- Add Vue.js CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+  <!-- Add Material Design Lite CSS -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/material-design-lite/1.3.0/material.min.css">
+</head>
+<body>
+  <div id="app">
+        <label>Name</label>
+        <input type="text" v-model="postData.Name">
+        <label>Address</label>
+        <input type="text" v-model="postData.address">
+        <label>Fee</label>
+        <input type="text" v-model="postData.fee">
+      <button v-on:click="submitData()" onclick="C:\Users\91950\Desktop\HCJ\HTML\!DOCTYPE html.html">Submit</button>
+  </div>
+
+  <script>
+    new Vue({
+      el: '#app',
+      data: {
+        postData: {
+          Name: '',
+          address: '',
+          fee: ''
+        }
+      },
+      methods: {
+        submitData() {
+          const apiUrl = 'http://127.0.0.1:8000/api/';
+          const options = {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(this.postData)
+          };
+
+          fetch(apiUrl, options)
+            .then(response => {
+              if (!response.ok) {
+                throw new Error('Network response was not ok');
+              }
+              return response.json();
+            })
+            .then(data => {
+              console.log('Data received:', data);
+              // Handle the successful response here
+            })
+            .catch(error => {
+              console.error('There was a problem with the fetch operation:', error);
+              // Handle the error here
+            });
+        }
+      }
+    });
+  </script>
+</body>
+</html>
