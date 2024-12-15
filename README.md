@@ -86,11 +86,3 @@ This project is a **Student Management System** that allows users to perform CRU
 - Include pagination in the API.
 - Enhance the frontend with Vue.js components.
 
----
-
-
-
-## Contact
-
-Created by **Vasanth**. For any inquiries, please reach out via [GitHub](https://github.com/VasanthaKumar-20).
-
